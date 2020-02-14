@@ -1,7 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/couple_1"
+        android:layout_width="181dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="28dp"
+        android:text="2. 10:10 - 11:30"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/couple_6" />
+
+    <TextView
+        android:id="@+id/couple_2"
+        android:layout_width="181dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="32dp"
+        android:text="3. 12:00 - 13:20"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/couple_1" />
+
+    <TextView
+        android:id="@+id/couple_3"
+        android:layout_width="181dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="32dp"
+        android:text="4. 13:40 - 15:00"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/couple_2" />
+
+    <TextView
+        android:id="@+id/couple_4"
+        android:layout_width="181dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="32dp"
+        android:text="5. 15:20 - 16:40"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/couple_3" />
+
+    <TextView
+        android:id="@+id/couple_5"
+        android:layout_width="181dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="32dp"
+        android:text="6. 17:00 - 18:20"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/couple_4" />
+
+    <TextView
+        android:id="@+id/couple_6"
+        android:textAlignment="center"
+        android:layout_width="181dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="32dp"
+        android:text="1. 8:30 - 9:50"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/week_day" />
+
+    <TextView
+        android:id="@+id/week_day"
+        android:layout_width="163dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="28dp"
+        android:text="Day of the week"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/list_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.001" />
+
+    <Button
+        android:id="@+id/list_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:text="List"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/couple_0"
+        android:layout_width="181dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="24dp"
+        android:text="7. 18:40 - 20:00"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/couple_5" />
+
+    <TextView
+        android:id="@+id/couple_7"
+        android:layout_width="181dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="12dp"
+        android:text="8. 18:40 - 20:00"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/list_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/couple_0"
+        app:layout_constraintVertical_bias="0.136" />
 </androidx.constraintlayout.widget.ConstraintLayout>
