@@ -2,54 +2,62 @@ package com.mirniy.timetable;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.constraintlayout.widget.ConstraintSet;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+    private int screenWidth, screenHeight;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        screenWidth = displayMetrics.widthPixels;
+        screenHeight = displayMetrics.heightPixels;
 
         ConstraintLayout layout = new ConstraintLayout(this);
 
-        TextView textView1 = new TextView(this);
-        TextView textView2 = new TextView(this);
+        layout.setBackgroundColor(Color.BLACK);
 
-        textView1.setText("Test1");
-        textView2.setText("Test2");
+        TextView[] textViews = new TextView[8];
 
-        layout.addView(textView1);
-        layout.addView(textView2);
+        int textViewHeight = -1;
 
-        textView1.setId(View.generateViewId());
-        textView2.setId(View.generateViewId());
+        for (int i = 0; i < textViews.length; ++i) {
+            textViews[i] = addLabel("Label " + i, layout);
 
-        ConstraintSet constraintSet = new ConstraintSet();
+            if (i == 0) {
+                textViews[i].setX(128);
+                textViews[i].setY(64);
 
-        constraintSet.clone(layout);
-        constraintSet.connect(textView1.getId(), ConstraintSet.LEFT, ConstraintSet.PARENT_ID, ConstraintSet.LEFT, 16);
-//        constraintSet.connect(textView1.getId(), ConstraintSet.RIGHT, ConstraintSet.PARENT_ID, ConstraintSet.RIGHT, 16);
-        constraintSet.connect(textView1.getId(), ConstraintSet.TOP, ConstraintSet.PARENT_ID, ConstraintSet.TOP, 64);
-//        constraintSet.connect(textView1.getId(), ConstraintSet.BOTTOM, ConstraintSet.PARENT_ID, ConstraintSet.BOTTOM, 16);
-        constraintSet.applyTo(layout);
+                textViews[i].measure(0, 0);
+                textViewHeight = textViews[i].getMeasuredHeight();
+            } else {
+                textViews[i].setX(128);
+                textViews[i].setY(textViews[i - 1].getY() + textViewHeight);
+            }
+        }
 
+        setContentView(layout, new ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+    }
 
-        constraintSet = new ConstraintSet();
+    private TextView addLabel(String text, ConstraintLayout layout) {
+        TextView textView = new TextView(this);
 
-        constraintSet.clone(layout);
-        constraintSet.connect(textView2.getId(), ConstraintSet.LEFT, ConstraintSet.PARENT_ID, ConstraintSet.LEFT, 24);
-//        constraintSet.connect(textView1.getId(), ConstraintSet.RIGHT, ConstraintSet.PARENT_ID, ConstraintSet.RIGHT, 16);
-        constraintSet.connect(textView2.getId(), ConstraintSet.TOP, ConstraintSet.PARENT_ID, ConstraintSet.TOP, 80);
-//        constraintSet.connect(textView1.getId(), ConstraintSet.BOTTOM, ConstraintSet.PARENT_ID, ConstraintSet.BOTTOM, 16);
-        constraintSet.applyTo(layout);
+        textView.setText(text);
+        textView.setTextColor(Color.WHITE);
 
-        ConstraintLayout.LayoutParams layoutParams = new ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.FILL_PARENT);
+        textView.setId(View.generateViewId());
 
-        setContentView(layout, layoutParams);
+        layout.addView(textView);
+
+        return textView;
     }
 }
